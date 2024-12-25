@@ -1,4 +1,4 @@
 runtime: nodejs20  # Or any other version of Node.js
-entrypoint: npm start
+entrypoint: npm run start:prod
 env_variables:
   REDIS_URL: "rediss://default:dce4434ca00845d09c4c6e2fe9bd5a9e@gusc1-precious-cicada-30864.upstash.io:30864"
