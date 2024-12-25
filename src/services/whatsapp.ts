@@ -6,7 +6,7 @@ const client = new Client({
   takeoverOnConflict: false,
   takeoverTimeoutMs: 999999,
   puppeteer: {
-    executablePath: '/usr/local/bin/chromium',
+    // executablePath: '/usr/local/bin/chromium',
     // '/usr/bin/google-chrome-stable',
     headless: true,
     args: ['--no-sandbox'],
