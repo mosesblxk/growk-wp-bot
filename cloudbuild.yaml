@@ -1,0 +1,23 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/certain-mission-399804/bubblebot:latest', '.']
+
+  # Step 2: Push the image to Google Container Registry (GCR)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/certain-mission-399804/bubblebot:latest']
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'bubblebot'
+      - '--image=gcr.io/certain-mission-399804/bubblebot:latest'
+      - '--platform=managed'
+      - '--region=us-central1'   # Modify this with your preferred region
+      - '--allow-unauthenticated'  # Allow unauthenticated access, if needed
+
+images:
+  - 'gcr.io/certain-mission-399804/bubblebot:latest'
